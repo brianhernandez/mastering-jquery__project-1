@@ -1,14 +1,64 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-
+/* body {background-color: lightblue;} */
 h1 {
   font-family: 'Montserrat', sans-serif;
 }
 
-.user-list {
+/* User Stub
+==========================*/
 
+
+/* User Card
+==========================*/
+
+.user-card__name,
+.user-card__email,
+.user-card__address-street,
+.user-card__address-suite,
+.user-card__address-city,
+.user-card__address-geo,
+.user-card__phone,
+.user-card__website,
+.user-card__company-name,
+.user-card__company-catch-phrase,
+.user-card__company-bs {
+  padding-left: 10px;
 }
 
-.user-list__user {
+.user-card {
   border: 2px solid cornflowerblue;
-  border-radius: 3px;
+  border-radius: 5px;
+  font-size: .9em;
+}
+
+.user-card__img {
+  margin-right: -15px;
+  margin-left: -15px;
+  margin-bottom: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  padding: 40px 15px;
+  background-color: lightgrey;
+}
+
+.user-card__email {
+  word-break: break-word;
+}
+
+.user-card__address-geo-label {
+  font-weight: bold;
+}
+
+.user-card__address-geo {
+  margin-bottom: 1rem;
+}
+
+.user-card__company-name,
+.user-card__company-catch-phrase,
+.user-card__company-bs {
+  display: block;
+}
+
+.user-card__company-label {
+  font-weight: bold;
 }

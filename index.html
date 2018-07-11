@@ -10,21 +10,51 @@
 </head>
 <body>
   <div class="container">
+
     <header class="row header">
-      <h1 class="col-12">The User List</h1>
+      <h1 class="col-12 text-center">The User List</h1>
       <div class="col-12"></div>
     </header>
-    <main class="row users">
-      <div class="col-sm-3 user-card">
-        <p class="user-card__name">Brian Hernandez</p>
-        <p class="user-card__user">Brian</p>
-        <p class="user-card__email">something@somewhere.com</p>
-        <p class="user-card__address">
-          <span class="user-card__address-street">Kulas Light</span>
-          <span class="user-card__address-suite">Apt. 556</span>
-          
-        </p>
 
+    <main class="row users">
+      <div class="col-md-4 user-stub">
+        <div class="user-stub__wrapper">
+          <div class="user-stub__img">
+            <h2 class="user-stub__user text-center">Brian</h2>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-4 user-card">
+        <div class="user-card__img">
+          <h2 class="user-card__user text-center">Brian</h3>
+        </div>
+        <h6>Name</h6>
+        <p class="user-card__name">Brian Hernandez</p>
+        <h6>Email</h6>
+        <p class="user-card__email">something@somewhere.com</p>
+        <h6>Address</h6>
+        <p class="user-card__address">
+          <span class="user-card__address-street">Kulas Light</span><br />
+          <span class="user-card__address-suite">Apt. 556</span><br />
+          <span class="user-card__address-city">Gwenborough,</span>
+          <span class="user-card__address-zipcode">92998-3874</span>
+        </p>
+        <div class="user-card__address-geo">
+          <span class="user-card__address-geo-label">Latitude: </span><span class="user-card__address-geo-lat">-37.3159</span>
+          <span class="user-card__address-geo-label">Longitude: </span><span class="user-card__address-geo-lng">81.1496</span>
+        </div>
+
+        <h6>Phone</h6>
+        <p class="user-card__phone">1-770-736-8031 x56442</p>
+        <h6>Website</h6>
+        <p class="user-card__website">hildegard.org</p>
+        <h6>Company</h6>
+        <p class="user-card__company">
+          <span class="user-card__company-name"><span class="user-card__company-label">Name: </span>Romaguera-Crona</span>
+          <span class="user-card__company-catch-phrase"><span class="user-card__company-label">Catch Phrase: </span>Multi-layered client-server neural-net</span>
+          <span class="user-card__company-bs"><span class="user-card__company-label">BS: </span>harness real-time e-markets</span>
+        </p>
       </div>
 
     </main>
