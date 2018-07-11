@@ -6,17 +6,42 @@ $(document).ready(function() {
       // if (index % === 0) {
       //   $
       // }
-      $users.append(buildUserCard(data[index]));
+      $users.append(buildUserStub(data[index]));
+      // $users.append(buildUserCard(data[index]));
     });
   });
 
+  $users.on('click', function(event) {
+    // console.log(event);
+    // console.log($(event).parents('.user-stub'));
+    console.log(this);
+    console.log($(this));
+    $(this).children('.user-stub').removeClass('selected');
+    $(event.target).parents('.user-stub').addClass('selected');
+  });
+
   function buildUserStub(indexedObject) {
-    
+    var $userStub = $('<div class="col-md-4 user-stub" id="'+indexedObject.id+'"></div>"'),
+        $userStubWrapper = $('<div class="user-stub__wrapper"></div>"'),
+        $userStubImg = $('<div class="user-stub__img"></div>'),
+        $userStubUsername = $('<h2 class="user-stub__username text-center">'+indexedObject.username+'</h2>'),
+        $userStubEmailLabel = $('<h6>Email</h6>'),
+        $userStubEmail =$('<p class="user-stub__email">'+indexedObject.email+'</p>');
+
+    $($userStubImg).append($userStubUsername);
+    $($userStubWrapper)
+      .append($userStubImg)
+      .append($userStubEmailLabel)
+      .append($userStubEmail);
+    $($userStub).append($userStubWrapper);
+
+    return $userStub;
   }
+
   function buildUserCard(indexedObject) {
     var $userCard = $('<div class="col-md-4 user-card"></div>'),
         $userCardImg = $('<div class="user-card__img"></div>'),
-        $userCardUser = $('<h2 class="user-card__user text-center">'+indexedObject.username+'</h2>'),
+        $userCardUser = $('<h2 class="user-card__username text-center">'+indexedObject.username+'</h2>'),
         $userCardNameLabel = $('<h6>Name</h6>'),
         $userCardName = $('<p class="user-card__name">'+indexedObject.name+'</p>'),
         $userCardEmailLabel = $('<h6>Email</h6>'),
