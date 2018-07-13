@@ -10,33 +10,25 @@ html {
   color: #494949;
 }
 
-/* @media (min-width: 576px) {
-  html {
-    font-size: 1.2rem;
-  }
-  h1 {
-
-  }
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 1.4rem;
-  }
-}
-
-@media (min-width: 992px) {
-  html {
-    font-size: 1.6rem;
-  }
-} */
-
 .header {
-  background: none;
+  background-color: white;
   transition: background .3s;
+  padding-top: 30px;
+  margin-bottom: 30px;
+  min-height: 78px;
+  transition: min-height .3s,
+              background-color .3s;
   /* background: no-repeat center url("sky.png"); */
 }
 
+.header.is-active {
+  background-color: cornflowerblue;
+  min-height: 50vh;
+}
+
+.header.is-active h1 {
+  color: white;
+}
 /* User Stub
 ==========================*/
 
@@ -90,6 +82,14 @@ html {
 /* User Card
 ==========================*/
 
+.user-card {
+  border: 2px solid cornflowerblue;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
+}
+
 .user-card__name,
 .user-card__email,
 .user-card__address-street,
@@ -102,12 +102,6 @@ html {
 .user-card__company-catch-phrase,
 .user-card__company-bs {
   padding-left: 10px;
-}
-
-.user-card {
-  border: 2px solid cornflowerblue;
-  border-radius: 5px;
-  /* font-size: .9em; */
 }
 
 .user-card__img {
@@ -140,4 +134,23 @@ html {
 
 .user-card__company-label {
   font-weight: bold;
+}
+
+/* Clear Button
+==========================*/
+
+.clear-button {
+  padding: 10px 15px;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 5px;
+  background: #17b82c;
+  border-radius: 3px;
+  display: inline-block;
+  cursor: pointer;
+  transition: background .3s;
+}
+
+.clear-button:hover {
+  background: #3ccd4f;
 }

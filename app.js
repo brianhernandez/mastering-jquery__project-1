@@ -12,12 +12,45 @@ $(document).ready(function() {
   });
 
   $users.on('click', function(event) {
-    // console.log(event);
-    // console.log($(event).parents('.user-stub'));
-    console.log(this);
-    console.log($(this));
-    $(this).children('.user-stub').removeClass('selected');
-    $(event.target).parents('.user-stub').addClass('selected');
+    var $userID;
+    console.log(event);
+    if ($(event.target).parents('.user-stub').hasClass('selected')) {
+      $(event.target).parents('.user-stub').toggleClass('selected');
+      $('.header').removeClass('is-active');
+      $userID = null;
+    } else {
+      $users.trigger('user-deselected');
+      $(this).children('.user-stub').removeClass('selected');
+      $(event.target).parents('.user-stub').toggleClass('selected');
+      $('.header').addClass('is-active');
+      $userID = $(event.target).parents('.user-stub').attr('id');
+    }
+
+    if ($userID) {
+      $users.trigger('user-selected', $userID);
+    } else {
+      $users.trigger('user-deselected');
+    }
+
+
+  });
+
+  $users.on('user-selected', function(event, userID) {
+    // $('.user-display').append('<div class="clear-button">Clear</div>');
+    $('<div class="clear-button">CLEAR</div>').hide().appendTo('.user-display').fadeIn(600);
+    $.get('data/users.json', function(data) {
+      $(buildUserCard(data[userID - 1])).hide().appendTo('.user-display').fadeIn(600);
+    });
+  });
+
+  $users.on('user-deselected', function(event) {
+    $('.user-display').children('.user-card').fadeOut(600).remove();
+    $('.user-display').children('.clear-button').fadeOut(600).remove();
+  });
+
+  $('.clear-button').on('click', function(event) {
+    $users.trigger('click');
+    console.log('clear button clicked');
   });
 
   function buildUserStub(indexedObject) {
