@@ -22,12 +22,18 @@ html {
 }
 
 .header.is-active {
-  background-color: cornflowerblue;
+  background-color: #92cefa;
   min-height: 50vh;
 }
 
 .header.is-active h1 {
   color: white;
+}
+
+@media screen and (max-width: 767.98px) {
+  .user-display {
+    flex-direction: column;
+  }
 }
 /* User Stub
 ==========================*/
@@ -54,6 +60,10 @@ html {
   border-top-right-radius: 2px;
   background-color: lightgrey;
   transition: background-color .3s;
+}
+
+.user-stub.has-address .user-stub__img {
+  background-color: #99c876;
 }
 
 .user-stub__username {
@@ -85,9 +95,14 @@ html {
 .user-card {
   border: 2px solid cornflowerblue;
   border-radius: 5px;
-  margin-left: auto;
-  margin-right: auto;
   background: white;
+  margin-bottom: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .user-card {
+    margin-top: 30px;
+  }
 }
 
 .user-card__name,
@@ -142,13 +157,23 @@ html {
 .clear-button {
   padding: 10px 15px;
   color: white;
-  font-weight: bold;
-  letter-spacing: 5px;
+  /* font-weight: bold; */
+  /* letter-spacing: 5px; */
+  margin-bottom: 30px;
+  margin-top: 30px;
   background: #17b82c;
   border-radius: 3px;
   display: inline-block;
   cursor: pointer;
   transition: background .3s;
+}
+
+@media screen and (min-width: 768px) {
+  .clear-button {
+    margin-right: 30px;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
 }
 
 .clear-button:hover {

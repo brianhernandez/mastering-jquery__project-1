@@ -3,27 +3,33 @@ $(document).ready(function() {
 
   $.get('data/users.json', function(data) {
     $(data).each(function(index) {
-      // if (index % === 0) {
-      //   $
-      // }
       $users.append(buildUserStub(data[index]));
-      // $users.append(buildUserCard(data[index]));
     });
+  }).done(function(data) {
+    $(data).each(function(index) {
+      if (data[index].address) {
+        var $userIdWithAddress = $('#'+(index + 1)+'');
+        $userIdWithAddress.addClass('has-address');
+      }
+    });
+    $users.children('.has-address').prependTo($users);
   });
 
   $users.on('click', function(event) {
     var $userID;
-    console.log(event);
     if ($(event.target).parents('.user-stub').hasClass('selected')) {
       $(event.target).parents('.user-stub').toggleClass('selected');
       $('.header').removeClass('is-active');
       $userID = null;
-    } else {
+    } else if($(event.target).parents('.user-stub')) {
       $users.trigger('user-deselected');
       $(this).children('.user-stub').removeClass('selected');
       $(event.target).parents('.user-stub').toggleClass('selected');
       $('.header').addClass('is-active');
       $userID = $(event.target).parents('.user-stub').attr('id');
+    }
+    if ($(event.target).hasClass('users')) {
+      $('.header').removeClass('is-active');
     }
 
     if ($userID) {
@@ -31,13 +37,10 @@ $(document).ready(function() {
     } else {
       $users.trigger('user-deselected');
     }
-
-
   });
 
   $users.on('user-selected', function(event, userID) {
-    // $('.user-display').append('<div class="clear-button">Clear</div>');
-    $('<div class="clear-button">CLEAR</div>').hide().appendTo('.user-display').fadeIn(600);
+    $('<div class="clear-button">Clear Selection</div>').hide().appendTo('.user-display').fadeIn(600);
     $.get('data/users.json', function(data) {
       $(buildUserCard(data[userID - 1])).hide().appendTo('.user-display').fadeIn(600);
     });
@@ -48,9 +51,8 @@ $(document).ready(function() {
     $('.user-display').children('.clear-button').fadeOut(600).remove();
   });
 
-  $('.clear-button').on('click', function(event) {
+  $(document).on('click', '.clear-button', function(event) {
     $users.trigger('click');
-    console.log('clear button clicked');
   });
 
   function buildUserStub(indexedObject) {
@@ -72,7 +74,7 @@ $(document).ready(function() {
   }
 
   function buildUserCard(indexedObject) {
-    var $userCard = $('<div class="col-md-4 user-card"></div>'),
+    var $userCard = $('<div class="col-xs-8 col-sm-7 col-md-6 col-lg-5 user-card"></div>'),
         $userCardImg = $('<div class="user-card__img"></div>'),
         $userCardUser = $('<h2 class="user-card__username text-center">'+indexedObject.username+'</h2>'),
         $userCardNameLabel = $('<h6>Name</h6>'),
